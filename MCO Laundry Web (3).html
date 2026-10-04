@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCO LAUNDRY - Cuci Setrika, Satuan, Kiloan & Express 3 Jam</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clover: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            dark: '#0e3a1f'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fafdfb;
+        }
+        .bg-clover-pattern {
+            background-color: #f2f9f4;
+            background-image: radial-gradient(#22c55e 0.5px, transparent 0.5px), radial-gradient(#22c55e 0.5px, #f2f9f4 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.05;
+        }
+        .clover-shadow {
+            box-shadow: 0 10px 30px -5px rgba(22, 163, 74, 0.15);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-clover-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-clover-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 bg-gradient-to-br from-clover-600 to-clover-800 rounded-2xl flex items-center justify-center text-white shadow-md shadow-clover-600/30 group-hover:scale-105 transition-transform duration-300">
+                        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+                            <!-- 4-Leaf Clover Icon -->
+                            <path d="M12 12c-1.5-2.5-4-3.5-6-2s-2.5 4 0 6c2.5 2 6 0 6-4zm0 0c2.5-1.5 3.5-4 2-6s-4-2.5-6 0c-2 2.5 0 6 4 6zm0 0c1.5 2.5 4 3.5 6 2s2.5-4 0-6c-2.5-2-6 0-6 4zm0 0c-2.5 1.5-3.5 4-2 6s4 2.5 6 0c2-2.5 0-6-4-6z"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-xl tracking-tight text-clover-900 leading-none">MCO <span class="text-clover-600">LAUNDRY</span></span>
+                        <span class="text-xs font-semibold text-clover-600 tracking-wider">mc(<span class="text-emerald-700">OLA</span>)undry</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Menu -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+                    <a href="#beranda" class="hover:text-clover-600 transition-colors">Beranda</a>
+                    <a href="#cerita" class="hover:text-clover-600 transition-colors">Cerita Kami</a>
+                    <a href="#harga" class="hover:text-clover-600 transition-colors">Daftar Harga</a>
+                    <a href="#kalkulator" class="hover:text-clover-600 transition-colors">Kalkulator</a>
+                    <a href="#lokasi" class="hover:text-clover-600 transition-colors">Lokasi & Kontak</a>
+                </div>
+
+                <!-- Header CTA Button -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/6282130823319?text=Halo%20MCO%20Laundry,%20saya%20mau%20tanya%20layanan%20laundry" target="_blank" class="inline-flex items-center gap-2 bg-clover-600 hover:bg-clover-700 text-white font-bold px-5 py-2.5 rounded-full shadow-lg shadow-clover-600/20 hover:shadow-clover-600/40 transition-all duration-300">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Chat WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-clover-600 p-2 focus:outline-none" aria-label="Buka Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-clover-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="#beranda" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-clover-50 hover:text-clover-700">Beranda</a>
+            <a href="#cerita" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-clover-50 hover:text-clover-700">Cerita Kami</a>
+            <a href="#harga" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-clover-50 hover:text-clover-700">Daftar Harga</a>
+            <a href="#kalkulator" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-clover-50 hover:text-clover-700">Kalkulator Biaya</a>
+            <a href="#lokasi" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-clover-50 hover:text-clover-700">Lokasi & Kontak</a>
+            <a href="https://wa.me/6282130823319?text=Halo%20MCO%20Laundry,%20saya%20mau%20tanya%20layanan%20laundry" target="_blank" class="w-full flex items-center justify-center gap-2 bg-clover-600 text-white font-bold py-3 rounded-xl shadow-md mt-2">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Hubungi via WhatsApp</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative overflow-hidden pt-8 pb-16 md:py-24 bg-gradient-to-b from-clover-50/70 via-white to-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-clover-100 border border-clover-200 text-clover-800 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-sm">
+                        <i class="fa-solid fa-clover text-clover-600"></i>
+                        <span>Layanan Laundry Bersih, Harum & Terpercaya</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+                        Pakaian Bersih Sempurna Bersama <span class="text-transparent bg-clip-text bg-gradient-to-r from-clover-700 via-clover-600 to-emerald-500">MCO LAUNDRY</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl font-medium text-clover-800 bg-clover-100/60 inline-block px-4 py-2 rounded-xl border border-clover-200">
+                        Cuci Setrika • Satuan & Kiloan • <span class="font-bold text-red-600">Express 3 Jam Ready!</span>
+                    </p>
+
+                    <p class="text-slate-600 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Solusi praktis pakaian bersih, rapi, dan wangi tahan lama untuk warga Perumahan Bumi Anggrek dan sekitarnya. Siap antar-jemput ke lokasi Anda!
+                    </p>
+
+                    <!-- Hero CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="https://wa.me/6282130823319?text=Halo%20MCO%20Laundry,%20saya%20ingin%20pesan%20layanan%20laundry%20antar%20jemput" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-clover-600 hover:bg-clover-700 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-clover-600/30 hover:scale-[1.02] transition-all duration-300">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Pesan via WhatsApp</span>
+                        </a>
+                        <a href="#harga" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white border-2 border-clover-200 hover:border-clover-600 text-clover-800 font-bold text-lg px-8 py-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                            <i class="fa-solid fa-list-check text-clover-600"></i>
+                            <span>Lihat Daftar Harga</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Info Badges -->
+                    <div class="pt-6 grid grid-cols-3 gap-3 border-t border-slate-200/80">
+                        <div class="text-center lg:text-left">
+                            <p class="text-xs text-slate-500">Layanan Express</p>
+                            <p class="font-bold text-slate-800 text-sm sm:text-base">3 Jam Selesai</p>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <p class="text-xs text-slate-500">Antar Jemput</p>
+                            <p class="font-bold text-clover-700 text-sm sm:text-base">FREE Ongkir*</p>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <p class="text-xs text-slate-500">Jam Buka</p>
+                            <p class="font-bold text-slate-800 text-sm sm:text-base">08:00 - 19:30</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Card Graphic -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md">
+                        <!-- Background Glow Effect -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-clover-500 to-emerald-400 rounded-3xl blur-xl opacity-30 animate-pulse"></div>
+                        
+                        <div class="relative bg-white rounded-3xl p-8 shadow-2xl border border-clover-100 text-center space-y-6">
+                            <div class="w-28 h-28 bg-gradient-to-tr from-clover-600 to-emerald-500 rounded-full mx-auto flex items-center justify-center text-white shadow-xl shadow-clover-600/30">
+                                <i class="fa-solid fa-clover text-6xl"></i>
+                            </div>
+
+                            <div>
+                                <h2 class="text-2xl font-black text-slate-800 tracking-tight">MCO LAUNDRY</h2>
+                                <p class="text-clover-600 font-semibold text-sm">mc(<span class="underline decoration-clover-400">OLA</span>)undry</p>
+                            </div>
+
+                            <div class="bg-clover-50 p-4 rounded-2xl border border-clover-100 text-left space-y-2 text-sm text-slate-700">
+                                <div class="flex items-center gap-2 font-semibold text-clover-800">
+                                    <i class="fa-solid fa-circle-check text-clover-600"></i>
+                                    <span>Cuci Setrika Hijienis & Terpisah</span>
+                                </div>
+                                <div class="flex items-center gap-2 font-semibold text-clover-800">
+                                    <i class="fa-solid fa-circle-check text-clover-600"></i>
+                                    <span>Cuci Sepatu Fast & Deep Clean</span>
+                                </div>
+                                <div class="flex items-center gap-2 font-semibold text-clover-800">
+                                    <i class="fa-solid fa-circle-check text-clover-600"></i>
+                                    <span>Layanan Satuan & Kiloan</span>
+                                </div>
+                            </div>
+
+                            <a href="#kalkulator" class="block w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-sm transition-colors">
+                                <i class="fa-solid fa-calculator mr-2"></i> Hitung Perkiraan Biaya
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Highlights -->
+    <section class="py-12 bg-white border-y border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="p-6 rounded-2xl bg-clover-50/50 border border-clover-100 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-clover-600 text-white flex items-center justify-center shrink-0 text-xl font-bold">
+                        <i class="fa-bolt fa-solid"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">Express 3 Jam</h3>
+                        <p class="text-xs text-slate-600 mt-1">Selesai kilat dalam 3 jam, cocok untuk pakaian mendadak.</p>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-clover-50/50 border border-clover-100 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-clover-600 text-white flex items-center justify-center shrink-0 text-xl font-bold">
+                        <i class="fa-truck-fast fa-solid"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">Free Ongkir</h3>
+                        <p class="text-xs text-slate-600 mt-1">Gratis antar-jemput radius <1 KM dengan minimal 5 Kg.</p>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-clover-50/50 border border-clover-100 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-clover-600 text-white flex items-center justify-center shrink-0 text-xl font-bold">
+                        <i class="fa-wand-magic-sparkles fa-solid"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">Harum & Rapi</h3>
+                        <p class="text-xs text-slate-600 mt-1">Deterjen pilihan dan pewangi tahan lama ramah serat kain.</p>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-clover-50/50 border border-clover-100 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-clover-600 text-white flex items-center justify-center shrink-0 text-xl font-bold">
+                        <i class="fa-shield-heart fa-solid"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">1 Mesin 1 Pelanggan</h3>
+                        <p class="text-xs text-slate-600 mt-1">Pakaian tidak dicampur dengan milik orang lain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cerita Kami Section -->
+    <section id="cerita" class="py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-clover-100 relative">
+                <!-- Background Emblem -->
+                <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
+                    <i class="fa-solid fa-clover text-9xl text-clover-800"></i>
+                </div>
+
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-clover-600 font-bold text-sm tracking-widest uppercase">Kisah Di Balik Nama</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Cerita Perjalanan Kami</h2>
+                    <div class="w-16 h-1 bg-clover-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="relative bg-clover-50/60 rounded-2xl p-6 sm:p-8 border border-clover-100/80 my-6">
+                    <i class="fa-quote-left text-3xl text-clover-300 mb-4 block"></i>
+                    <p class="text-slate-700 text-base sm:text-lg leading-relaxed italic">
+                        "Perjalanan aku dimulai dari sebuah kios kecil sederhana. Aku percaya bahwa setiap usaha memiliki cerita tersendiri. Nama <strong class="text-clover-900 font-bold">MCO laundry</strong> lahir dari impian aku, <strong class="text-clover-800">MC</strong> nama singkatan seseorang di masa lalu, dengan namaku <strong class="text-clover-800">OLA</strong>. Dan jadilah <span class="bg-clover-200/80 px-2 py-0.5 rounded text-clover-900 font-bold not-italic">mc(OLA)undry</span>."
+                    </p>
+                    <i class="fa-quote-right text-3xl text-clover-300 mt-4 block text-right"></i>
+                </div>
+
+                <p class="text-slate-600 text-center text-sm sm:text-base leading-relaxed">
+                    Setiap helai pakaian yang Anda percayakan kepada kami dirawat dengan sepenuh hati, karena bagi kami MCO Laundry bukan sekadar bisnis, melainkan dedikasi dan impian yang terus tumbuh.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price List Section -->
+    <section id="harga" class="py-16 sm:py-24 bg-clover-pattern">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-block bg-clover-100 text-clover-800 font-bold text-xs uppercase px-3 py-1 rounded-full mb-2">Transparan & Terjangkau</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900">Daftar Harga MCO Laundry</h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">Pilih layanan laundry sesuai kebutuhan Anda dengan harga bersahabat.</p>
+            </div>
+
+            <!-- Price Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Cuci + Setrika -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg border border-clover-100 hover:border-clover-400 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-clover-100 text-clover-700 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-shirt"></i>
+                            </span>
+                            <span class="text-xs bg-slate-100 text-slate-600 font-bold px-2.5 py-1 rounded-full">Kiloan</span>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 border-b border-slate-100 pb-3">CUCI + SETRIKA</h3>
+                        
+                        <div class="space-y-4 my-4">
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-slate-800">Reguler</p>
+                                        <p class="text-xs text-slate-500">Proses 3 Hari</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-lg font-black text-clover-700">Rp 8.000</span>
+                                        <span class="text-xs text-slate-500">/Kg</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-clover-50 p-3 rounded-xl border border-clover-200 relative overflow-hidden">
+                                <span class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl">KILAT</span>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-clover-900">Express</p>
+                                        <p class="text-xs text-clover-700">3 Jam Ready</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-lg font-black text-clover-800">Rp 15.000</span>
+                                        <span class="text-xs text-clover-700">/Kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6282130823319?text=Halo%20MCO%20Laundry,%20saya%20mau%20pesan%20Cuci%20Setrika" target="_blank" class="w-full mt-4 text-center bg-clover-600 hover:bg-clover-700 text-white font-bold py-2.5 rounded-xl text-sm transition-colors">
+                        Pesan Layanan
+                    </a>
+                </div>
+
+                <!-- Card 2: Setrika Aja -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg border border-clover-100 hover:border-clover-400 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-clover-100 text-clover-700 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-temperature-arrow-up"></i>
+                            </span>
+                            <span class="text-xs bg-slate-100 text-slate-600 font-bold px-2.5 py-1 rounded-full">Kiloan</span>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 border-b border-slate-100 pb-3">SETRIKA AJA</h3>
+                        
+                        <div class="space-y-4 my-4">
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-slate-800">Reguler</p>
+                                        <p class="text-xs text-slate-500">Proses 2 Hari</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-lg font-black text-clover-700">Rp 6.000</span>
+                                        <span class="text-xs text-slate-500">/Kg</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-clover-50 p-3 rounded-xl border border-clover-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-clover-900">Express</p>
+                                        <p class="text-xs text-clover-700">3 Jam Ready</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-lg font-black text-clover-800">Rp 8.000</span>
+                                        <span class="text-xs text-clover-700">/Kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6282130823319?text=Halo%20MCO%20Laundry,%20saya%20mau%20pesan%20Setrika%20Aja" target="_blank" class="w-full mt-4 text-center bg-clover-600 hover:bg-clover-700 text-white font-bold py-2.5 rounded-xl text-sm transition-colors">
+                        Pesan Layanan
+                    </a>
+                </div>
+
+                <!-- Card 3: Cuci Sepatu -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg border border-clover-100 hover:border-clover-400 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-clover-100 text-clover-700 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-shoe-prints"></i>
+                            </span>
+                            <span class="text-xs bg-slate-100 text-slate-600 font-bold px-2.5 py-1 rounded-full">Spesialis</span>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 border-b border-slate-100 pb-3">CUCI SEPATU</h3>
+                        
+                        <div class="space-y-2 my-4 text-xs">
+                            <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <div>
+                                    <p class="font-bold text-slate-800">Fast Clean</p>
+                                    <p class="text-[10px] text-slate-500">Estimasi 3 Hari</p>
+                                </div>
+                                <span class="font-black text-clover-700 text-sm">Rp 15.000</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <div>
+                                    <p class="font-bold text-slate-800">Fast Clean</p>
+                                    <p class="text-[10px] text-slate-500">Estimasi 1 Hari</p>
+                                </div>
+                                <span class="font-black text-clover-700 text-sm">Rp 25.000</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-clover-50 p-2.5 rounded-lg border border-clover-200">
+                                <div>
+                                    <p class="font-bold text-clover-900">Deep Clean</p>
+                                    <p class="text-[10px] text-clover-700">Estimasi 3 Hari</p>
+                                </div>
+                                <span class="font-black text-clover-800 text-sm">Rp 25.000</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-clover-50 p-2.5 rounded-lg border border-clover-200">
+                                <div>
+                                    <p class="font-bold text-clover-900">Deep Clean</p>
+                                    <p class="text-[10px] text-clover-700">Estimasi 1 Hari</p>
+                                </div>
+                                <span class="font-black text-clover-800 text-sm">Rp 35.000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6282130823319?text=Halo%20MCO%20Laundry,%20saya%20mau%20cuci%20sepatu" target="_blank" class="w-full mt-4 text-center bg-clover-600 hover:bg-clover-700 text-white font-bold py-2.5 rounded-xl text-sm transition-colors">
+                        Pesan Layanan
+                    </a>
+                </div>
+
+                <!-- Card 4: Satuan -->
+                <div class="bg-white rounded-3xl p-6 shadow-lg border border-clover-100 hover:border-clover-400 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-clover-100 text-clover-700 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-box-open"></i>
+                            </span>
+                            <span class="text-xs bg-slate-100 text-slate-600 font-bold px-2.5 py-1 rounded-full">Satuan</span>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-slate-900 border-b border-slate-100 pb-3">LAUNDRY SATUAN</h3>
+                        
+                        <div class="space-y-2 my-4 text-xs">
+                            <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <span class="font-bold text-slate-800">Bed Cover</span>
+                                <span class="font-black text-clover-700 text-sm">Rp 20.000 <span class="text-[10px] text-slate-500 font-normal">/pcs</span></span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <span class="font-bold text-slate-800">Boneka (Kecil/Sedang)</span>
+                                <span class="font-black text-clover-700 text-sm">Rp 10.000 <span class="text-[10px] text-slate-500 font-normal">/pcs</span></span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <span class="font-bold text-slate-800">Boneka (Besar)</span>
+                                <span class="font-black text-clover-700 text-sm">Rp 15.000 <span class="text-[10px] text-slate-500 font-normal">/pcs</span></span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <span class="font-bold text-slate-800">Karpet</span>
+                                <span class="font-black text-clover-700 text-sm">Rp 13.000 <span class="text-[10px] text-slate-500 font-normal">/m²</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6282130823319?text=Halo%20MCO%20Laundry,%20saya%20mau%20pesan%20laundry%20satuan" target="_blank" class="w-full mt-4 text-center bg-clover-600 hover:bg-clover-700 text-white font-bold py-2.5 rounded-xl text-sm transition-colors">
+                        Pesan Layanan
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Delivery Service Banner -->
+            <div class="mt-12 bg-gradient-to-r from-clover-800 to-clover-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-5">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-3xl shrink-0">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                    <div>
+                        <span class="bg-clover-500 text-white text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">DELIVERY SERVICE</span>
+                        <h4 class="text-xl sm:text-2xl font-bold mt-1">Layanan Antar - Jemput Pakaian</h4>
+                        <p class="text-clover-100 text-sm mt-1">Praktis, tidak perlu keluar rumah! Kami siap mengambil laundry ke lokasi Anda.</p>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-auto bg-white/10 backdrop-blur-sm p-4 rounded-2xl border border-white/10 text-sm space-y-2 shrink-0">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-clover-400"></i>
+                        <span><strong>FREE ONGKIR:</strong> Radius &lt; 1 KM (Min. 5 Kg)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-clover-300"></i>
+                        <span><strong>Luar Kompleks:</strong> Rp 3.000 - Rp 6.000 / jalan</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Estimator Section -->
+    <section id="kalkulator" class="py-16 sm:py-24 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-clover-50 via-white to-clover-50/30 rounded-3xl p-6 sm:p-10 border border-clover-200 shadow-xl">
+                
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <span class="text-clover-700 font-bold text-xs uppercase bg-clover-100 px-3 py-1 rounded-full">Hitung Cepat</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">Kalkulator Perkiraan Biaya</h2>
+                    <p class="text-slate-600 text-sm mt-1">Estimasi biaya laundry sebelum Anda memesan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                    <!-- Form Controls -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pilih Jenis Layanan</label>
+                            <select id="calc-service" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-clover-500">
+                                <optgroup label="Cuci + Setrika">
+                                    <option value="8000" data-unit="Kg" data-name="Cuci+Setrika Reguler (3 Hari)">Cuci + Setrika Reguler (3 Hari) - Rp 8.000/Kg</option>
+                                    <option value="15000" data-unit="Kg" data-name="Cuci+Setrika Express (3 Jam)">Cuci + Setrika Express (3 Jam Ready) - Rp 15.000/Kg</option>
+                                </optgroup>
+                                <optgroup label="Setrika Aja">
+                                    <option value="6000" data-unit="Kg" data-name="Setrika Aja Reguler (2 Hari)">Setrika Aja Reguler (2 Hari) - Rp 6.000/Kg</option>
+                                    <option value="8000" data-unit="Kg" data-name="Setrika Aja Express (3 Jam)">Setrika Aja Express (3 Jam) - Rp 8.000/Kg</option>
+                                </optgroup>
+                                <optgroup label="Cuci Sepatu">
+                                    <option value="15000" data-unit="Pasang" data-name="Cuci Sepatu Fast Clean (3 Hari)">Cuci Sepatu Fast Clean (3 Hari) - Rp 15.000</option>
+                                    <option value="25000" data-unit="Pasang" data-name="Cuci Sepatu Fast Clean (1 Hari)">Cuci Sepatu Fast Clean (1 Hari) - Rp 25.000</option>
+                                    <option value="25000" data-unit="Pasang" data-name="Cuci Sepatu Deep Clean (3 Hari)">Cuci Sepatu Deep Clean (3 Hari) - Rp 25.000</option>
+                                    <option value="35000" data-unit="Pasang" data-name="Cuci Sepatu Deep Clean (1 Hari)">Cuci Sepatu Deep Clean (1 Hari) - Rp 35.000</option>
+                                </optgroup>
+                                <optgroup label="Satuan">
+                                    <option value="20000" data-unit="Pcs" data-name="Bed Cover">Bed Cover - Rp 20.000/Pcs</option>
+                                    <option value="10000" data-unit="Pcs" data-name="Boneka (Kecil/Sedang)">Boneka Kecil/Sedang - Rp 10.000/Pcs</option>
+                                    <option value="15000" data-unit="Pcs" data-name="Boneka (Besar)">Boneka Besar - Rp 15.000/Pcs</option>
+                                    <option value="13000" data-unit="m²" data-name="Karpet">Karpet - Rp 13.000/m²</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
+                                Jumlah / Berat (<span id="calc-unit-label">Kg</span>)
+                            </label>
+                            <input type="number" id="calc-qty" min="1" value="5" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-clover-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Opsi Antar-Jemput</label>
+                            <select id="calc-delivery" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-clover-500">
+                                <option value="0">Datang Langsung / Free Ongkir (< 1 KM & min 5 Kg)</option>
+                                <option value="3000">Antar Jemput Luar Kompleks (Rp 3.000)</option>
+                                <option value="6000">Antar Jemput Luar Kompleks Jauh (Rp 6.000)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Calculation Result Display -->
+                    <div class="bg-clover-900 text-white rounded-2xl p-6 flex flex-col justify-between h-full shadow-lg">
+                        <div>
+                            <span class="text-clover-300 font-bold text-xs uppercase tracking-wider">Hasil Estimasi</span>
+                            <h3 class="text-xl font-bold mt-1" id="calc-service-title">Cuci + Setrika Reguler</h3>
+                            
+                            <div class="my-6 space-y-2 text-sm border-t border-b border-clover-800/80 py-4">
+                                <div class="flex justify-between text-clover-200">
+                                    <span>Harga Layanan:</span>
+                                    <span font-semibold id="calc-base-price">Rp 8.000</span>
+                                </div>
+                                <div class="flex justify-between text-clover-200">
+                                    <span>Jumlah / Berat:</span>
+                                    <span font-semibold id="calc-qty-display">5 Kg</span>
+                                </div>
+                                <div class="flex justify-between text-clover-200">
+                                    <span>Ongkos Kirim:</span>
+                                    <span font-semibold id="calc-delivery-display">Rp 0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="mb-4">
+                                <span class="text-xs text-clover-300">Total Perkiraan Biaya:</span>
+                                <div class="text-3xl font-black text-clover-300" id="calc-total">Rp 40.000</div>
+                            </div>
+
+                            <button id="send-wa-calc" class="w-full bg-clover-500 hover:bg-clover-400 text-clover-950 font-bold py-3.5 rounded-xl text-center flex items-center justify-center gap-2 transition-colors">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span>Pesan Estimasi Ini via WA</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Operasional & Lokasi Section -->
+    <section id="lokasi" class="py-16 sm:py-24 bg-slate-900 text-white relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Info Details -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div>
+                        <span class="bg-clover-800 text-clover-200 text-xs font-bold px-3 py-1 rounded-full uppercase">Kunjungi Kios Kami</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold mt-3">Informasi Toko & Lokasi</h2>
+                        <p class="text-slate-400 mt-2 text-sm">Kami siap melayani kebutuhan cucian Anda setiap hari.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Jam Buka -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-clover-800/80 border border-clover-700 flex items-center justify-center text-clover-400 shrink-0 text-xl">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-white">Jam Operasional</h3>
+                                <p class="text-clover-300 font-semibold text-base">08:00 - 19:30 WIB</p>
+                                <p class="text-xs text-slate-400 mt-0.5">Buka Setiap Hari (Senin - Minggu)</p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-clover-800/80 border border-clover-700 flex items-center justify-center text-clover-400 shrink-0 text-xl">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-white">Nomor WhatsApp / Telepon</h3>
+                                <p class="text-clover-300 font-semibold text-base">0821-3082-3319</p>
+                                <p class="text-xs text-slate-400 mt-0.5">Siap merespon pertanyaan & pemesanan Anda.</p>
+                            </div>
+                        </div>
+
+                        <!-- Alamat Lengkap -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-clover-800/80 border border-clover-700 flex items-center justify-center text-clover-400 shrink-0 text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-white">Alamat MCO Laundry</h3>
+                                <p class="text-slate-300 text-sm leading-relaxed mt-1">
+                                    Perumahan Bumi Anggrek, Blok Akses Jalan Utama, Kelurahan Karangsatria, Kecamatan Tambun Utara, Kabupaten Bekasi, Jawa Barat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="https://wa.me/6282130823319?text=Halo%20MCO%20Laundry,%20saya%20ingin%20pesan%20laundry" target="_blank" class="flex-1 bg-clover-600 hover:bg-clover-500 text-white font-bold py-3.5 px-6 rounded-2xl text-center flex items-center justify-center gap-2 shadow-lg transition-colors">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Pesan Sekarang via WA</span>
+                        </a>
+                        <a href="https://maps.google.com/?q=Perumahan+Bumi+Anggrek+Karangsatria+Tambun+Utara" target="_blank" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-bold py-3.5 px-6 rounded-2xl text-center flex items-center justify-center gap-2 transition-colors">
+                            <i class="fa-solid fa-map-location-dot text-clover-400"></i>
+                            <span>Petunjuk Arah (Maps)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Map Visual Card -->
+                <div class="lg:col-span-6">
+                    <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-store text-clover-400 text-2xl"></i>
+                                <div>
+                                    <p class="font-bold text-white">Bumi Anggrek Branch</p>
+                                    <p class="text-xs text-slate-400">Tambun Utara, Bekasi</p>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 text-xs px-3 py-1 rounded-full font-semibold border border-emerald-500/30">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> BUKA SEKARANG
+                            </span>
+                        </div>
+
+                        <!-- Map Placeholder graphic -->
+                        <div class="relative w-full h-64 bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 flex flex-col items-center justify-center text-center p-6 bg-clover-pattern">
+                            <div class="w-16 h-16 rounded-full bg-clover-600/30 text-clover-400 flex items-center justify-center text-3xl mb-3 shadow-lg">
+                                <i class="fa-solid fa-location-dot animate-bounce"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-base">Lokasi Strategis Jalan Utama</h4>
+                            <p class="text-xs text-slate-400 mt-1 max-w-xs">Perumahan Bumi Anggrek, Karangsatria, Tambun Utara, Bekasi.</p>
+                            <a href="https://maps.google.com/?q=Perumahan+Bumi+Anggrek+Karangsatria+Tambun+Utara" target="_blank" class="mt-4 inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs py-2 px-4 rounded-xl shadow">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center gap-3">
+                <div class="w-8 h-8 bg-clover-600 rounded-xl flex items-center justify-center text-white text-sm font-bold">
+                    <i class="fa-solid fa-clover"></i>
+                </div>
+                <span class="font-extrabold text-white text-lg tracking-tight">MCO LAUNDRY</span>
+            </div>
+
+            <p class="text-xs text-slate-500 max-w-md mx-auto">
+                Layanan laundry cuci setrika kiloan & satuan terpercaya. Bersih, wangi, higienis, dan pengerjaan kilat 3 jam.
+            </p>
+
+            <p class="text-xs text-slate-600 pt-4">
+                &copy; <span id="year"></span> MCO Laundry - mc(OLA)undry. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/6282130823319?text=Halo%20MCO%20Laundry,%20saya%20ingin%20tanya%20layanan%20laundry" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-600/50 hover:scale-110 transition-transform duration-300 group" aria-label="Chat via WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <!-- Tooltip -->
+        <span class="absolute right-16 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-md">
+            Hubungi Kami
+        </span>
+    </a>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Set Current Year in Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close Mobile Menu on Link Click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Calculator Interactive Logic
+        const serviceSelect = document.getElementById('calc-service');
+        const qtyInput = document.getElementById('calc-qty');
+        const deliverySelect = document.getElementById('calc-delivery');
+
+        const unitLabel = document.getElementById('calc-unit-label');
+        const serviceTitle = document.getElementById('calc-service-title');
+        const basePriceDisplay = document.getElementById('calc-base-price');
+        const qtyDisplay = document.getElementById('calc-qty-display');
+        const deliveryDisplay = document.getElementById('calc-delivery-display');
+        const totalDisplay = document.getElementById('calc-total');
+        const sendWaCalcBtn = document.getElementById('send-wa-calc');
+
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+        }
+
+        function calculateTotal() {
+            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+            const price = parseInt(selectedOption.value) || 0;
+            const unit = selectedOption.getAttribute('data-unit') || 'Kg';
+            const name = selectedOption.getAttribute('data-name') || 'Layanan Laundry';
+            
+            const qty = parseFloat(qtyInput.value) || 1;
+            const deliveryFee = parseInt(deliverySelect.value) || 0;
+
+            const subtotal = price * qty;
+            const grandTotal = subtotal + deliveryFee;
+
+            // Update UI
+            unitLabel.textContent = unit;
+            serviceTitle.textContent = name;
+            basePriceDisplay.textContent = formatRupiah(price);
+            qtyDisplay.textContent = `${qty} ${unit}`;
+            deliveryDisplay.textContent = formatRupiah(deliveryFee);
+            totalDisplay.textContent = formatRupiah(grandTotal);
+
+            // Return text for WA
+            return {
+                name,
+                qty,
+                unit,
+                grandTotal: formatRupiah(grandTotal)
+            };
+        }
+
+        // Event Listeners
+        serviceSelect.addEventListener('change', calculateTotal);
+        qtyInput.addEventListener('input', calculateTotal);
+        deliverySelect.addEventListener('change', calculateTotal);
+
+        // Send Calculator Order to WA
+        sendWaCalcBtn.addEventListener('click', () => {
+            const data = calculateTotal();
+            const message = `Halo MCO Laundry, saya mau pesan:%0A` +
+                            `- Layanan: ${encodeURIComponent(data.name)}%0A` +
+                            `- Jumlah: ${data.qty} ${data.unit}%0A` +
+                            `- Estimasi Total: ${encodeURIComponent(data.grandTotal)}%0A%0A` +
+                            `Mohon diproses, terima kasih!`;
+            
+            window.open(`https://wa.me/6282130823319?text=${message}`, '_blank');
+        });
+
+        // Initialize calculator on page load
+        calculateTotal();
+    </script>
+</body>
+</html>
